@@ -287,6 +287,19 @@ void report_current_position_projected() {
     report_current_grblstate_moving();
   }
 
+  void report_current_position_moving_hack() {
+    const millis_t ms = millis();
+    get_cartesian_from_steppers();
+    const xyz_pos_t lpos = cartes.asLogical();
+    serialprintPGM("sync ");
+    SERIAL_ECHOLNPAIR(
+      "X:", lpos.x
+        , " Y:", lpos.y
+        , " S:", int(M_State_grbl)
+        , " T:", ms
+    );
+  }  
+
   /**
    * Set a Grbl-compatible state from the current marlin_state
    */

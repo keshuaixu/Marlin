@@ -233,10 +233,11 @@ inline float home_bump_mm(const AxisEnum axis) {
 void report_real_position();
 void report_current_position();
 void report_current_position_projected();
+void report_current_position_moving_hack();
 
 #if ENABLED(AUTO_REPORT_POSITION)
   #include "../libs/autoreport.h"
-  struct PositionReport { static void report() { report_current_position_projected(); } };
+  struct PositionReport { static void report() { report_current_position_moving_hack(); } };
   extern AutoReporter<PositionReport> position_auto_reporter;
 #endif
 
