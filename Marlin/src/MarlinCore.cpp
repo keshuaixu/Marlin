@@ -911,7 +911,7 @@ void kill(PGM_P const lcd_error/*=nullptr*/, PGM_P const lcd_component/*=nullptr
     host_action_kill();
   #endif
 
-  minkill(steppers_off);
+  minkill(true);
 }
 
 void minkill(const bool steppers_off/*=false*/) {
